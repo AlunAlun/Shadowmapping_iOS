@@ -1,9 +1,9 @@
 //
 //  main.m
-//  ShadowMapping_iOS
+//  ShadowTest_
 //
-//  Created by Alun on 7/27/13.
-//  Copyright (c) 2013 Alun. All rights reserved.
+//  Created by Alun on 5/24/13.
+//  Copyright (c) 2013 GTI. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

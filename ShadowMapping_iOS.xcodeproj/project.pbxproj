@@ -11,13 +11,32 @@
 		A7AA281617A332840006022A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AA281517A332840006022A /* Foundation.framework */; };
 		A7AA281817A332840006022A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AA281717A332840006022A /* CoreGraphics.framework */; };
 		A7AA281E17A332840006022A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7AA281C17A332840006022A /* InfoPlist.strings */; };
-		A7AA282017A332840006022A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AA281F17A332840006022A /* main.m */; };
-		A7AA282417A332840006022A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AA282317A332840006022A /* AppDelegate.m */; };
 		A7AA282617A332840006022A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A7AA282517A332840006022A /* Default.png */; };
 		A7AA282817A332840006022A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7AA282717A332840006022A /* Default@2x.png */; };
 		A7AA282A17A332840006022A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7AA282917A332840006022A /* Default-568h@2x.png */; };
-		A7AA282D17A332840006022A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7AA282B17A332840006022A /* MainStoryboard.storyboard */; };
-		A7AA283017A332840006022A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AA282F17A332840006022A /* ViewController.m */; };
+		A7AA285117A3333B0006022A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = A7AA283717A3333B0006022A /* AppDelegate.mm */; };
+		A7AA285217A3333B0006022A /* avatar_girl.obj in Resources */ = {isa = PBXBuildFile; fileRef = A7AA283817A3333B0006022A /* avatar_girl.obj */; };
+		A7AA285317A3333B0006022A /* bunny_al_smooth.obj in Resources */ = {isa = PBXBuildFile; fileRef = A7AA283917A3333B0006022A /* bunny_al_smooth.obj */; };
+		A7AA285417A3333B0006022A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7AA283A17A3333B0006022A /* Default-568h@2x.png */; };
+		A7AA285517A3333B0006022A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A7AA283B17A3333B0006022A /* Default.png */; };
+		A7AA285617A3333B0006022A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7AA283C17A3333B0006022A /* Default@2x.png */; };
+		A7AA285717A3333B0006022A /* EdgeDetectFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A7AA283D17A3333B0006022A /* EdgeDetectFragment.glsl */; };
+		A7AA285817A3333B0006022A /* EdgeDetectVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A7AA283E17A3333B0006022A /* EdgeDetectVertex.glsl */; };
+		A7AA285917A3333B0006022A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7AA284017A3333B0006022A /* InfoPlist.strings */; };
+		A7AA285B17A3333B0006022A /* PCFEdgeShadowFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A7AA284317A3333B0006022A /* PCFEdgeShadowFragment.glsl */; };
+		A7AA285C17A3333B0006022A /* PCFEdgeShadowVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A7AA284417A3333B0006022A /* PCFEdgeShadowVertex.glsl */; };
+		A7AA285D17A3333B0006022A /* PhongFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A7AA284517A3333B0006022A /* PhongFragment.glsl */; };
+		A7AA285E17A3333B0006022A /* PhongVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A7AA284617A3333B0006022A /* PhongVertex.glsl */; };
+		A7AA285F17A3333B0006022A /* Shader.mm in Sources */ = {isa = PBXBuildFile; fileRef = A7AA284817A3333B0006022A /* Shader.mm */; };
+		A7AA286017A3333B0006022A /* ShaderScreenSpaceFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A7AA284917A3333B0006022A /* ShaderScreenSpaceFragment.glsl */; };
+		A7AA286117A3333B0006022A /* ShaderScreenSpaceVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A7AA284A17A3333B0006022A /* ShaderScreenSpaceVertex.glsl */; };
+		A7AA286217A3333B0006022A /* ShaderShadowMapFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A7AA284B17A3333B0006022A /* ShaderShadowMapFragment.glsl */; };
+		A7AA286317A3333B0006022A /* ShaderShadowMapVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A7AA284C17A3333B0006022A /* ShaderShadowMapVertex.glsl */; };
+		A7AA286517A3333B0006022A /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A7AA285017A3333B0006022A /* ViewController.mm */; };
+		A7AA286717A333550006022A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AA286617A333550006022A /* OpenGLES.framework */; };
+		A7AA286917A333590006022A /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AA286817A333590006022A /* GLKit.framework */; };
+		A7AA286B17A334B90006022A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AA286A17A334B90006022A /* main.m */; };
+		A7AA286D17A335060006022A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7AA286C17A335060006022A /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,16 +46,38 @@
 		A7AA281717A332840006022A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A7AA281B17A332840006022A /* ShadowMapping_iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ShadowMapping_iOS-Info.plist"; sourceTree = "<group>"; };
 		A7AA281D17A332840006022A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A7AA281F17A332840006022A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A7AA282117A332840006022A /* ShadowMapping_iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShadowMapping_iOS-Prefix.pch"; sourceTree = "<group>"; };
-		A7AA282217A332840006022A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		A7AA282317A332840006022A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A7AA282517A332840006022A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A7AA282717A332840006022A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A7AA282917A332840006022A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		A7AA282C17A332840006022A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		A7AA282E17A332840006022A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A7AA282F17A332840006022A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A7AA283617A3333B0006022A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A7AA283717A3333B0006022A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		A7AA283817A3333B0006022A /* avatar_girl.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = avatar_girl.obj; sourceTree = "<group>"; };
+		A7AA283917A3333B0006022A /* bunny_al_smooth.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bunny_al_smooth.obj; sourceTree = "<group>"; };
+		A7AA283A17A3333B0006022A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A7AA283B17A3333B0006022A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		A7AA283C17A3333B0006022A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A7AA283D17A3333B0006022A /* EdgeDetectFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EdgeDetectFragment.glsl; sourceTree = "<group>"; };
+		A7AA283E17A3333B0006022A /* EdgeDetectVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EdgeDetectVertex.glsl; sourceTree = "<group>"; };
+		A7AA284117A3333B0006022A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		A7AA284317A3333B0006022A /* PCFEdgeShadowFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PCFEdgeShadowFragment.glsl; sourceTree = "<group>"; };
+		A7AA284417A3333B0006022A /* PCFEdgeShadowVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PCFEdgeShadowVertex.glsl; sourceTree = "<group>"; };
+		A7AA284517A3333B0006022A /* PhongFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PhongFragment.glsl; sourceTree = "<group>"; };
+		A7AA284617A3333B0006022A /* PhongVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PhongVertex.glsl; sourceTree = "<group>"; };
+		A7AA284717A3333B0006022A /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
+		A7AA284817A3333B0006022A /* Shader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Shader.mm; sourceTree = "<group>"; };
+		A7AA284917A3333B0006022A /* ShaderScreenSpaceFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderScreenSpaceFragment.glsl; sourceTree = "<group>"; };
+		A7AA284A17A3333B0006022A /* ShaderScreenSpaceVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderScreenSpaceVertex.glsl; sourceTree = "<group>"; };
+		A7AA284B17A3333B0006022A /* ShaderShadowMapFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderShadowMapFragment.glsl; sourceTree = "<group>"; };
+		A7AA284C17A3333B0006022A /* ShaderShadowMapVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderShadowMapVertex.glsl; sourceTree = "<group>"; };
+		A7AA284D17A3333B0006022A /* ShadowMapping_iOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ShadowMapping_iOS-Info.plist"; sourceTree = "<group>"; };
+		A7AA284E17A3333B0006022A /* ShadowMapping_iOS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShadowMapping_iOS-Prefix.pch"; sourceTree = "<group>"; };
+		A7AA284F17A3333B0006022A /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A7AA285017A3333B0006022A /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		A7AA286617A333550006022A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		A7AA286817A333590006022A /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		A7AA286A17A334B90006022A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A7AA286C17A335060006022A /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7AA286917A333590006022A /* GLKit.framework in Frameworks */,
+				A7AA286717A333550006022A /* OpenGLES.framework in Frameworks */,
 				A7AA281417A332840006022A /* UIKit.framework in Frameworks */,
 				A7AA281617A332840006022A /* Foundation.framework in Frameworks */,
 				A7AA281817A332840006022A /* CoreGraphics.framework in Frameworks */,
@@ -56,6 +99,8 @@
 		A7AA280717A332840006022A = {
 			isa = PBXGroup;
 			children = (
+				A7AA286817A333590006022A /* GLKit.framework */,
+				A7AA286617A333550006022A /* OpenGLES.framework */,
 				A7AA281917A332840006022A /* ShadowMapping_iOS */,
 				A7AA281217A332840006022A /* Frameworks */,
 				A7AA281117A332840006022A /* Products */,
@@ -83,11 +128,32 @@
 		A7AA281917A332840006022A /* ShadowMapping_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				A7AA282217A332840006022A /* AppDelegate.h */,
-				A7AA282317A332840006022A /* AppDelegate.m */,
-				A7AA282B17A332840006022A /* MainStoryboard.storyboard */,
-				A7AA282E17A332840006022A /* ViewController.h */,
-				A7AA282F17A332840006022A /* ViewController.m */,
+				A7AA283617A3333B0006022A /* AppDelegate.h */,
+				A7AA283717A3333B0006022A /* AppDelegate.mm */,
+				A7AA283817A3333B0006022A /* avatar_girl.obj */,
+				A7AA283917A3333B0006022A /* bunny_al_smooth.obj */,
+				A7AA283A17A3333B0006022A /* Default-568h@2x.png */,
+				A7AA283B17A3333B0006022A /* Default.png */,
+				A7AA286A17A334B90006022A /* main.m */,
+				A7AA283C17A3333B0006022A /* Default@2x.png */,
+				A7AA286C17A335060006022A /* MainStoryboard.storyboard */,
+				A7AA283D17A3333B0006022A /* EdgeDetectFragment.glsl */,
+				A7AA283E17A3333B0006022A /* EdgeDetectVertex.glsl */,
+				A7AA283F17A3333B0006022A /* en.lproj */,
+				A7AA284317A3333B0006022A /* PCFEdgeShadowFragment.glsl */,
+				A7AA284417A3333B0006022A /* PCFEdgeShadowVertex.glsl */,
+				A7AA284517A3333B0006022A /* PhongFragment.glsl */,
+				A7AA284617A3333B0006022A /* PhongVertex.glsl */,
+				A7AA284717A3333B0006022A /* Shader.h */,
+				A7AA284817A3333B0006022A /* Shader.mm */,
+				A7AA284917A3333B0006022A /* ShaderScreenSpaceFragment.glsl */,
+				A7AA284A17A3333B0006022A /* ShaderScreenSpaceVertex.glsl */,
+				A7AA284B17A3333B0006022A /* ShaderShadowMapFragment.glsl */,
+				A7AA284C17A3333B0006022A /* ShaderShadowMapVertex.glsl */,
+				A7AA284D17A3333B0006022A /* ShadowMapping_iOS-Info.plist */,
+				A7AA284E17A3333B0006022A /* ShadowMapping_iOS-Prefix.pch */,
+				A7AA284F17A3333B0006022A /* ViewController.h */,
+				A7AA285017A3333B0006022A /* ViewController.mm */,
 				A7AA281A17A332840006022A /* Supporting Files */,
 			);
 			path = ShadowMapping_iOS;
@@ -98,13 +164,20 @@
 			children = (
 				A7AA281B17A332840006022A /* ShadowMapping_iOS-Info.plist */,
 				A7AA281C17A332840006022A /* InfoPlist.strings */,
-				A7AA281F17A332840006022A /* main.m */,
 				A7AA282117A332840006022A /* ShadowMapping_iOS-Prefix.pch */,
 				A7AA282517A332840006022A /* Default.png */,
 				A7AA282717A332840006022A /* Default@2x.png */,
 				A7AA282917A332840006022A /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A7AA283F17A3333B0006022A /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				A7AA284017A3333B0006022A /* InfoPlist.strings */,
+			);
+			path = en.lproj;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,7 +235,23 @@
 				A7AA282617A332840006022A /* Default.png in Resources */,
 				A7AA282817A332840006022A /* Default@2x.png in Resources */,
 				A7AA282A17A332840006022A /* Default-568h@2x.png in Resources */,
-				A7AA282D17A332840006022A /* MainStoryboard.storyboard in Resources */,
+				A7AA285217A3333B0006022A /* avatar_girl.obj in Resources */,
+				A7AA285317A3333B0006022A /* bunny_al_smooth.obj in Resources */,
+				A7AA285417A3333B0006022A /* Default-568h@2x.png in Resources */,
+				A7AA285517A3333B0006022A /* Default.png in Resources */,
+				A7AA285617A3333B0006022A /* Default@2x.png in Resources */,
+				A7AA285717A3333B0006022A /* EdgeDetectFragment.glsl in Resources */,
+				A7AA285817A3333B0006022A /* EdgeDetectVertex.glsl in Resources */,
+				A7AA285917A3333B0006022A /* InfoPlist.strings in Resources */,
+				A7AA285B17A3333B0006022A /* PCFEdgeShadowFragment.glsl in Resources */,
+				A7AA285C17A3333B0006022A /* PCFEdgeShadowVertex.glsl in Resources */,
+				A7AA285D17A3333B0006022A /* PhongFragment.glsl in Resources */,
+				A7AA285E17A3333B0006022A /* PhongVertex.glsl in Resources */,
+				A7AA286017A3333B0006022A /* ShaderScreenSpaceFragment.glsl in Resources */,
+				A7AA286117A3333B0006022A /* ShaderScreenSpaceVertex.glsl in Resources */,
+				A7AA286217A3333B0006022A /* ShaderShadowMapFragment.glsl in Resources */,
+				A7AA286317A3333B0006022A /* ShaderShadowMapVertex.glsl in Resources */,
+				A7AA286D17A335060006022A /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,9 +262,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7AA282017A332840006022A /* main.m in Sources */,
-				A7AA282417A332840006022A /* AppDelegate.m in Sources */,
-				A7AA283017A332840006022A /* ViewController.m in Sources */,
+				A7AA285117A3333B0006022A /* AppDelegate.mm in Sources */,
+				A7AA285F17A3333B0006022A /* Shader.mm in Sources */,
+				A7AA286517A3333B0006022A /* ViewController.mm in Sources */,
+				A7AA286B17A334B90006022A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,12 +280,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		A7AA282B17A332840006022A /* MainStoryboard.storyboard */ = {
+		A7AA284017A3333B0006022A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A7AA282C17A332840006022A /* en */,
+				A7AA284117A3333B0006022A /* en */,
 			);
-			name = MainStoryboard.storyboard;
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
