@@ -1,6 +1,5 @@
 //
-//  ShaderLoader.h
-//  ios3D
+//  Shader.h
 //
 //  Created by Alun on 4/3/13.
 //  Copyright (c) 2013 GTI. All rights reserved.

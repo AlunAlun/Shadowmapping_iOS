@@ -1,7 +1,7 @@
 
 //
 //  ViewController.m
-//  ShadowTest_Hard
+//  ShadowMapping_iOS
 //
 //  Created by Alun on 5/24/13.
 //  Copyright (c) 2013 GTI. All rights reserved.
@@ -28,7 +28,6 @@ GLfloat FloorVertexData[32] =
     1000.0,-2.0,-1000.0,    0.0,1.0,0.0,    1.0,0.0,
     
 };
-
 GLuint FloorIndicesData[6] =
 {
     0, 1, 3,        0, 3, 2,
@@ -42,7 +41,6 @@ GLfloat ScreenVertexData[32] =
     1,  1, 0, 0, 0, -1, 1, 1,
     1, -1, 0, 0, 0, -1, 1, 0
 };
-
 GLuint ScreenIndicesData[6] =
 {
     0, 1, 2,
@@ -88,7 +86,6 @@ GLfloat CubeVertexData[192] =
     -0.5f, -0.5f, -0.5f,    0.0f, 0.0f, -1.0f,  1.0f, 0.0f,
     -0.5f,  0.5f, -0.5f,    0.0f, 0.0f, -1.0f,  1.0f, 1.0f,
 };
-
 GLuint CubeIndicesData[36] =
 {
     // right
@@ -167,25 +164,26 @@ typedef enum {
 } ShadowMode;
 
 /*** START MAIN CLASS ***/
-
+//Because we only really have one class, I just use a bunch of
+//global vars
 @interface ViewController ()
 {
+    //camera vectors & matrices
     GLKMatrix4 _modelMatrix;
     GLKMatrix4 _viewMatrix;
     GLKMatrix4 _modelViewMatrix;
     GLKMatrix4 _projectionMatrix;
-    
+    GLKVector3 _cameraPosition; //kept apart to rotate it on touch
+    //light vectors & matrices
     GLKMatrix4 _viewMatrixLight;
     GLKMatrix4 _modelViewMatrixLight;
     GLKMatrix4 _projectionMatrixLight;
     GLKMatrix4 _depthMVPMatrix;
     GLKMatrix4 _depthBiasMVP;
-    
-    GLKVector3 _cameraPosition;
-    
     GLKVector3 _lightPosition;
     GLKVector3 _lightTarget;
     
+    //Various vert and ind buffer objects
     GLuint _cubeVerticesVBO;
     GLuint _cubeIndicesVBO;
     GLuint _cubeVAO;
@@ -203,16 +201,14 @@ typedef enum {
     GLuint _screenIndicesVBO;
     GLuint _screenVAO;
     
+    //target for shadow pass
     GLuint _renderBufferA;
     GLuint _renderTextureA;
-   
+    //target for edge pass
     GLuint _renderBufferB;
     GLuint _renderTextureB;
     
-    GLuint _program;
-    GLuint _programShadow;
-    GLuint _programScreenSpace;
-    
+    //various shaders which we precompile for speed
     Shader *_mainShader;
     Shader *_mainShaderHard;
     Shader *_mainShaderSoft;
@@ -222,14 +218,16 @@ typedef enum {
     Shader *_edgeShader;
     Shader *_phongShader;
     
+    //variables used for UI
     ShadowMode _shadowMode;
     UILabel *_textLabel;
-    
     float _xTouchLoc;
     float _yTouchLoc;
     GLfloat _lastScale;
+    bool _showEdgeMap;
 }
-
+//I have no idea why I declared these as property and not
+//global vars like the others. THere's no real reason.
 @property(nonatomic, strong) EAGLContext *context;
 @property(nonatomic, assign) int screenWidth;
 @property(nonatomic, assign) int screenHeight;
@@ -258,7 +256,7 @@ typedef enum {
     
     // Set depth format, multisamples, and preferred Max FPS
     view.drawableDepthFormat = GLKViewDrawableDepthFormat16;
-    //view.drawableMultisample = GLKViewDrawableMultisample4X;
+    view.drawableMultisample = GLKViewDrawableMultisample4X;
     self.preferredFramesPerSecond = 60; //Max is 60 thnx to iPhone/iPad screen refresh rate
     
     // set flags 
@@ -376,14 +374,14 @@ typedef enum {
     
     /*** SHADOW MATRICES ***/
     _viewMatrixLight = GLKMatrix4MakeLookAt(_lightPosition.x, _lightPosition.y, _lightPosition.z,
-                                                      _lightTarget.x, _lightTarget.y, _lightTarget.z,
-                                                        0.0f, 1.0f, 0.0f);
-    _projectionMatrixLight = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(45.0),(float)self.screenWidth/(float)self.screenHeight,50.0, 500.0);
-    //_projectionMatrixLight = GLKMatrix4MakeOrtho(-100.0, 100.0, -100.0, 100.0, 1.0, 500.0);
+                                            _lightTarget.x, _lightTarget.y, _lightTarget.z,
+                                            0.0f, 1.0f, 0.0f);
+    _projectionMatrixLight = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(45.0),
+                                                       (float)self.screenWidth/(float)self.screenHeight,
+                                                       50.0, 500.0);
     
     _modelViewMatrixLight = GLKMatrix4Multiply(_viewMatrixLight, GLKMatrix4Identity);
     _depthMVPMatrix = GLKMatrix4Multiply(_projectionMatrixLight, _modelViewMatrixLight);
-
     GLKMatrix4 biasMatrix = GLKMatrix4Make(
                                            0.5, 0.0, 0.0, 0.0,
                                            0.0, 0.5, 0.0, 0.0,
@@ -392,27 +390,33 @@ typedef enum {
                                            );
     _depthBiasMVP = GLKMatrix4Multiply(biasMatrix, _depthMVPMatrix);
     
-    /*** UIKit touch setup ***/
-    
+    /*** UI setup ***/
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(Scale:)];
 	[view addGestureRecognizer:pinchRecognizer];
     _lastScale = 1.0;
-    
+
     UITapGestureRecognizer *tapRecogniser = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(Tap:)];
     tapRecogniser.numberOfTapsRequired = 2;
     [view addGestureRecognizer:tapRecogniser];
     
-    _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 800, 40)];
-    [_textLabel setText:[NSString stringWithFormat:@"iOS Shadowing. Swipe to rotate. Double-tap to change mode. Current Mode: %@", [self currentShadowModeString]]];
-    _textLabel.backgroundColor = [UIColor blackColor];
+    UITapGestureRecognizer *tap22Recogniser = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(Tap22:)];
+    tap22Recogniser.numberOfTapsRequired = 2;
+    tap22Recogniser.numberOfTouchesRequired = 2;
+    [view addGestureRecognizer:tap22Recogniser];
+    _showEdgeMap = false;
+    
+    _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 800, 100)];
+    [_textLabel setText:[NSString stringWithFormat:@"iOS Shadowing. MSAA enabled. 6700ish faces. \nSwipe to rotate. \nDouble-tap-two-fingers to see edge map.\nDouble-tap-one-finger to change shadowing mode. \nCurrent Mode: %@", [self currentShadowModeString]]];
+    _textLabel.backgroundColor = [UIColor clearColor];
     _textLabel.textColor = [UIColor whiteColor];
-
+    [_textLabel setFont:[UIFont systemFontOfSize:12]];
+    _textLabel.numberOfLines = 0;
     [view addSubview:_textLabel];
     
-    
     /*** SETUP GL BUFFERS ***/
+    //glEnable(GL_CULL_FACE);
     
-    [self setupCubeBuffers];
+    //[self setupCubeBuffers];
     [self setupFloorBuffers];
     [self setupOBJBuffers:@"avatar_girl.obj"];
     
@@ -424,20 +428,16 @@ typedef enum {
 // Main draw method
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-    //time set
-    //CFTimeInterval previousTimestamp = CFAbsoluteTimeGetCurrent();
-    
-    
     // Store screen FBO ref so we can draw into it after
     // drawing into any other FBOs
     GLint oldFBO;
     glGetIntegerv(GL_FRAMEBUFFER_BINDING, &oldFBO);
     
+
+    
     /*** START SHADOW PASS ***/
     glBindFramebufferOES(GL_FRAMEBUFFER_OES, _renderBufferA);
-        //cull front faces for shadow pass - only works for double sided meshes
-        //glCullFace(GL_FRONT);
-        //Set viewport and clear buffer to 'far'
+        //glCullFace(GL_FRONT); //cull front faces for shadow pass - only works for double sided meshes
         glViewport(0, 0, RENDERTEXTURE_A_RES, RENDERTEXTURE_A_RES);
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         glClear( GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT );
@@ -449,6 +449,8 @@ typedef enum {
 
     glBindFramebufferOES(GL_FRAMEBUFFER_OES, 0);
      /*** END SHADOW PASS ***/
+    
+    
     
     /*** START EDGE PASS ***/
     glBindFramebufferOES(GL_FRAMEBUFFER_OES, _renderBufferB);
@@ -464,16 +466,12 @@ typedef enum {
     
     glBindFramebufferOES(GL_FRAMEBUFFER_OES, 0);
     /*** END EDGE PASS ***/
-
     
     
     
     /*** START RENDER TO SCREEN ***/
     glBindFramebufferOES(GL_FRAMEBUFFER_OES, oldFBO);
-        glEnable(GL_CULL_FACE);
-        //Cull back faces now - only works for double sided meshes
-        //glCullFace(GL_BACK);
-        //Set viewport and clear buffer to black
+        //glCullFace(GL_BACK);         //Cull back faces now - only works for double sided meshes
         glViewport(0, 0, self.screenWidth, self.screenHeight);
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear( GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT );
@@ -483,14 +481,12 @@ typedef enum {
         //[self drawCube];
         [self drawOBJ];
     
-        //uncomment to draw screen quad and check content of Framebuffer
-        //[self drawScreenQuadwithTexture:_renderTextureB andShader:_screenShader];
+        //draw edge map texture to screen if true
+        if (_showEdgeMap)
+            [self drawScreenQuadwithTexture:_renderTextureB andShader:_screenShader];
      glBindFramebufferOES(GL_FRAMEBUFFER_OES, oldFBO);
     /*** END RENDER TO SCREEN ***/
     
-    //time measure
-    //CFTimeInterval frameDuration = CFAbsoluteTimeGetCurrent() - previousTimestamp;
-    //_textLabel.text =  [NSString stringWithFormat:@"Frame duration: %f ms.", frameDuration * 1000.0];
 }
 
 -(void)setupCubeBuffers
@@ -917,7 +913,12 @@ typedef enum {
             
     }
     //update UI
-    [_textLabel setText:[NSString stringWithFormat:@"iOS Shadowing. Swipe to rotate. Double-tap to change mode. Current Mode: %@", [self currentShadowModeString]]];
+    [_textLabel setText:[NSString stringWithFormat:@"iOS Shadowing. MSAA enabled. 6700ish faces. \nSwipe to rotate. \nDouble-tap-two-fingers to see edge map.\nDouble-tap-one-finger to change shadowing mode. \nCurrent Mode: %@", [self currentShadowModeString]]];
+}
+
+-(void)Tap22:(UITapGestureRecognizer*)sender
+{
+    _showEdgeMap = !_showEdgeMap;
 }
 
 //quick method to return a string for current shadow mode
